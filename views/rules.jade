@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+  nav()
+    a(href='/') home
+  div()
+    h2 Prototype notes
+    ul
+      li Only tested on Chrome using a Mac. 
+      li If the puck is wrapping on your screen in both directions you are the only player. To simulate multiple players connect using one ore more browser windows
+    
+    h2 Pucks
+    ul
+      li create a puck by touching a blank region
+      li the longer you touch the larger your puck will be
+      li you can fling a puck in any direction
+      li if your fast enough you can catch a puck
+    
+    h2 Fields and Goals
+    ul 
+      li in the center of your field is your goal
+      li your field is a part of a grid
+      li when a puck exists your field it enters the a opponents field
+      li your puck can be loaded by letting it slide against your goal
+      li if you slide your loaded puck into an opponents goal you get a point and all your opponents points
+      li if a loaded puck slides into your goal you loose
+      

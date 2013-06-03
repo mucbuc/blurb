@@ -1,5 +1,27 @@
 extends layout
 
 block content
+  script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/sylvester.js')
+  script(src='/javascripts/core.js')
+  script(src='/javascripts/debug.js')
+  script(src='/javascripts/canvas.js')
+  script(src='/javascripts/system.js')
+  script(src='/javascripts/game.js')
+  script(src='/javascripts/kinetic.js')
+  script(src='/javascripts/disc.js')
+  script(src='/javascripts/puck.js')
+  script(src='/javascripts/collision.js')
+  script(src='/javascripts/goal.js')
+  script(src='/javascripts/boundary.js')
+  script(src='/javascripts/logic.js')
+  script(src='/javascripts/app.js')
   h1= title
-  p Welcome to #{title}
+  nav()
+    a(href='rules') rules
+  div(id='score')
+    p score: 0
+  canvas(id='canvas'
+    width = 1000
+    height = 1000)
+  

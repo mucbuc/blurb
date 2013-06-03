@@ -1,7 +1,7 @@
 doctype 5
-html
+html(ng-app="Blurb")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+  body(ng-controller='GameController')
     block content
