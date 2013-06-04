@@ -74,6 +74,13 @@ function Logic( game ) {
           || invalid.indexOf(obj2) != -1) {
         collisions.removeElements( collision );
       }
+      else if (	(	obj1.touchTime
+      			&&  obj1.touchTime > collision.predicted )
+      		 ||	( 	obj2.touchTime 
+      		  	&& 	obj2.touchTime > collision.predicted) )
+      { 
+        collisions.removeElements( collision );
+      }
       else if (collision.getTime() <= game.time) {
         
         if (obj1 === goal) {
@@ -203,12 +210,12 @@ function Logic( game ) {
       if (rogue !== puck) {
         var t = relativeDistanceDiscDisc( rogue, puck );
         if (t > 0) {
-          collisions.addElements( new Collision( rogue, puck, t + game.time ) );
+          collisions.addElements( new Collision( rogue, puck, t + game.time, game.time ) );
         }
       }
       var t = relativeDistanceDiscDisc( goal, puck );
       if (t > 0) {
-        collisions.addElements( new Collision( goal, puck, t + game.time ) );
+        collisions.addElements( new Collision( goal, puck, t + game.time, game.time ) );
       }
       
       checkCollisionsBoundaries( rogue );

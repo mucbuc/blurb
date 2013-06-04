@@ -1,9 +1,10 @@
-function Collision( a, b, t ) {
+function Collision( a, b, t, p ) {
   console.log( 'new collision ' + t );
   
   var time = t
     , obj1 = a
-    , obj2 = b;
+    , obj2 = b
+    , predicted = p;
   
   this.getTime = function() { 
     return time;
@@ -16,4 +17,8 @@ function Collision( a, b, t ) {
   this.object2 = function() { 
     return obj2;
   };
+  
+  this.__defineGetter__( "predicted", function() {
+    return predicted;
+  } );
 };

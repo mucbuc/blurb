@@ -24,9 +24,11 @@ function Puck( game, center ) {
 
     this.cancelMotion();
     this.beginMotionUniform( va.subtract( n ) );
-
+	this.touchTime = game.time;
+	
     puck.cancelMotion();
     puck.beginMotionUniform( vb.add( n ) );
+    puck.touchTime = game.time;
   };
 
   this.collideGoal = function( goal ) {
@@ -41,6 +43,7 @@ function Puck( game, center ) {
     
     this.cancelMotion();
     this.beginMotionUniform( va.subtract( n ) );
+    this.touchTime = game.time;
   };
 
   this.initDrag = function( pos ) {
@@ -49,6 +52,8 @@ function Puck( game, center ) {
 
     this.cancelMotion();
     offset = this.center.subtract( pos );
+    
+    this.touchTime = game.time;
   };
 
   this.mouseMove = function( pos ) {
