@@ -12,6 +12,8 @@ function Puck( game, center ) {
     
   Disc.call( this, game );
   
+  this.fillStyle = game.DEFAULT_FILL_STYLE;
+  
   this.collidePuck = function( puck ) {
     var va = this.velocity
       , vb = puck.velocity
@@ -89,7 +91,7 @@ function Puck( game, center ) {
       , puck = this
       , pump = {
           tick: function() { 
-            puck.radius = beginRadius + (game.time - beginTime) / 10;
+            puck.radius = beginRadius + (game.time - beginTime) * game.RADIUS_GROWTH_FACTOR;
           }, 
           mouseUp: function() {
             game.dynamics.removeElements( pump );
@@ -112,4 +114,3 @@ function Puck( game, center ) {
 };
 
 Puck.prototype = new Disc;
-Puck.prototype.fillStyle = '#eee';

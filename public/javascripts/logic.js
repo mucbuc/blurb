@@ -6,6 +6,11 @@ function Logic( game ) {
     , boundaries = []
     , points = 0;
 
+  game.VELOCITY_SAMPLE_TOLERANCE = 1000 / 20;
+  game.DEFAULT_DISC_SIZE = 5;
+  game.RADIUS_GROWTH_FACTOR = 1 / 10;
+  game.DEFAULT_FILL_STYLE = '#eee';
+
   game.dynamics.addElements( this );
   game.visuals.addElements( this );
   game.touchables.addElements( this );
@@ -48,7 +53,7 @@ function Logic( game ) {
 
     function handleGoalCollision( puck ) {
       puck.collideGoal( goal );
-      if (puck.fillStyle === '#eee') {
+      if (puck.fillStyle === game.DEFAULT_FILL_STYLE) {
         puck.fillStyle = goal.fillStyle;
       }
       else {
@@ -149,7 +154,7 @@ function Logic( game ) {
       puck.center = pos;
       puck.initBlowup();
       puck.initDrag( pos );
-      puck.fillStyle = '#eee';
+      puck.fillStyle = game.DEFAULT_FILL_STYLE;
     };
     
     if (counter) {

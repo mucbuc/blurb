@@ -78,6 +78,6 @@ function Kinetic( game ) {
   };
   
   this.isSamplingVelocity = function() {
-    return game.time - sampleTime < 1000 / 20;
+    return game.time - sampleTime < game.VELOCITY_SAMPLE_TOLERANCE;
   };
 };

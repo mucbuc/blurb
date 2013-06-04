@@ -7,7 +7,7 @@ objective:
 
 function Disc( game, r ) {
   
-  var radius = r == undefined ? 5 : r;
+  var radius = r == undefined ? game.DEFAULT_DISC_SIZE : r;
   
   if (game != undefined) {
     Kinetic.call( this, game );
