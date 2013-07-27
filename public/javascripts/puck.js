@@ -17,15 +17,15 @@ function Puck( game, center ) {
   this.collidePuck = function( puck ) {
     var va = this.velocity
       , vb = puck.velocity
-      , n = this.center.subtract( puck.center )
+      , n = this.center.sub( puck.center )
       , p = 0;
 
-    n = n.multiply( 1 / n.modulus() );
+    n = n.scale( 1 / n.length() );
     p = va.dot( n ) - vb.dot( n );
-    n = n.multiply( p );
+    n = n.scale( p );
 
     this.cancelMotion();
-    this.beginMotionUniform( va.subtract( n ) );
+    this.beginMotionUniform( va.sub( n ) );
 	this.touchTime = game.time;
 	
     puck.cancelMotion();
@@ -35,16 +35,16 @@ function Puck( game, center ) {
 
   this.collideGoal = function( goal ) {
     var va = this.velocity
-      , vb = va.multiply( -1 )
-      , n = this.center.subtract( goal.center )
+      , vb = va.scale( -1 )
+      , n = this.center.sub( goal.center )
       , p = 0;
 
-    n = n.multiply( 1 / n.modulus() );
+    n = n.scale( 1 / n.length() );
     p = va.dot( n ) - vb.dot( n );
-    n = n.multiply( p );
+    n = n.scale( p );
     
     this.cancelMotion();
-    this.beginMotionUniform( va.subtract( n ) );
+    this.beginMotionUniform( va.sub( n ) );
     this.touchTime = game.time;
   };
 
@@ -53,7 +53,7 @@ function Puck( game, center ) {
     game.touchables.addElements( this );
 
     this.cancelMotion();
-    offset = this.center.subtract( pos );
+    offset = this.center.sub( pos );
     
     this.touchTime = game.time;
   };
@@ -78,8 +78,8 @@ function Puck( game, center ) {
   }; 
 
   this.isUnder = function( pos ) {
-    var diff = pos.subtract( this.center );
-    if (diff && diff.modulus() < this.radius) {
+    var diff = pos.sub( this.center );
+    if (diff && diff.length() < this.radius) {
       return true;
     }
     return false;

@@ -122,8 +122,8 @@ function Logic( game ) {
           , v = puck.velocity;
         
         game.emitter.emit( 'transfer', { 
-          position: { x: p.e(1), y: p.e(2) },
-          velocity: { x: v.e(1), y: v.e(2) }, 
+          position: { x: p.x, y: p.y },
+          velocity: { x: v.x, y: v.y }, 
           radius: puck.radius,
           fillStyle: puck.fillStyle
         } );

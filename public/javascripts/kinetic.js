@@ -35,7 +35,7 @@ function Kinetic( game ) {
     originTime = game.time;
 
     this.centerAtTime = function( t ) {
-      return center.add( velocity.multiply( t - originTime ) );
+      return center.add( velocity.scale( t - originTime ) );
     };
 
     this.__defineGetter__( "center", function() {
@@ -63,7 +63,7 @@ function Kinetic( game ) {
     } );
     
     this.__defineSetter__( "center", function( c ) {
-      velocity = c.subtract( center ).multiply( 1 / (game.time - sampleTime) );
+      velocity = c.sub( center ).scale( 1 / (game.time - sampleTime) );
       sampleTime = game.time;
       center = c;
     } );

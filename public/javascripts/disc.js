@@ -18,7 +18,7 @@ function Disc( game, r ) {
     var context = canvas.getContext();
 
     context.beginPath();
-    context.arc( this.center.e(1), this.center.e(2), this.radius, 0, 2 * Math.PI );
+    context.arc( this.center.x, this.center.y, this.radius, 0, 2 * Math.PI );
     context.closePath();
     context.fillStyle = this.fillStyle;
     context.fill();
@@ -37,8 +37,8 @@ function Disc( game, r ) {
 Disc.prototype = new Kinetic;
 
 function relativeDistanceDiscDisc( q, p ) { 
-  var bd = q.center.subtract( p.center )
-    , vd = q.velocity.subtract( p.velocity ) 
+  var bd = q.center.sub( p.center )
+    , vd = q.velocity.sub( p.velocity ) 
     , dot = bd.dot( vd )
     , t = -dot / vd.dot(vd)
     , d = bd.dot(bd) + t * dot

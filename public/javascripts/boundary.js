@@ -28,7 +28,7 @@ function Boundary( game, edge ) {
   init();
   
   this.getRelativeDistance = function( puck ) {
-    var diff = anchor.subtract( puck.center )
+    var diff = anchor.sub( puck.center )
       , relVelocity = puck.velocity.dot( normal )
       , relDist = diff.dot( normal )
     return relDist / relVelocity;
@@ -36,14 +36,14 @@ function Boundary( game, edge ) {
 
   this.render = function( canvas ) {
     var context = canvas.context
-      , dir = normal.multiply( 100 )
+      , dir = normal.scale( 100 )
       , point = anchor.add( dir );
     
     context.beginPath();
     context.strokeStyle = '#FF0000';
     context.lineWidth = 10;
-    context.moveTo( anchor.e(1), anchor.e(2) );
-    context.lineTo( point.e(1), point.e(2) ); 
+    context.moveTo( anchor.x, anchor.y );
+    context.lineTo( point.x, point.y ); 
     context.stroke();
   };
 };

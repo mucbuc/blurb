@@ -94,7 +94,7 @@ function Game( elementName, emitter ) {
     var t = canvas.positionOnCanvas( e )
       , pos = $V( [ t.x, t.y ] );
     
-    if (pos.e(1) < canvas.width && pos.e(2) < canvas.height) { 
+    if (pos.x < canvas.width && pos.y < canvas.height) { 
       touchables.forEach( function( l ) { 
         l.mouseDown( pos ); 
       } );
