@@ -1,3 +1,0 @@
-cd ../public/javascripts
-ln -f -s ../../javascripts/canvas.js
-ln -f -s ../../javascripts/core.js
