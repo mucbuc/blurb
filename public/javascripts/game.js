@@ -75,21 +75,24 @@ function Game( elementName, emitter ) {
   };
 
   function mouseUp( e ) {
-    var pos = canvas.positionOnCanvas( e );
+    var t = canvas.positionOnCanvas( e )
+      , pos = $V( [ t.x, t.y ] );
     touchables.forEach( function( l ) { 
       l.mouseUp( pos ); 
     } );
   };
 
   function mouseMove( e ) {
-    var pos = canvas.positionOnCanvas( e );
+    var t = canvas.positionOnCanvas( e )
+      , pos = $V( [ t.x, t.y ] );
     touchables.forEach( function( l ) { 
       l.mouseMove( pos ); 
     } );
   };
 
   function mouseDown( e ) {
-    var pos = canvas.positionOnCanvas( e );
+    var t = canvas.positionOnCanvas( e )
+      , pos = $V( [ t.x, t.y ] );
     
     if (pos.e(1) < canvas.width && pos.e(2) < canvas.height) { 
       touchables.forEach( function( l ) { 
