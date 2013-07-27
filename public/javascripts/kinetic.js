@@ -15,8 +15,8 @@ todo:
 
 function Kinetic( game ) {
 
-  var velocity = Vector.Zero( 2 )
-    , center = Vector.Zero( 2 )
+  var velocity = Vec.Zero
+    , center = Vec.Zero
     , sampleTime = 0
     , originTime = 0;
     
@@ -51,7 +51,7 @@ function Kinetic( game ) {
   this.cancelMotion = function() {
   
     center = this.center;
-    velocity = Vector.Zero( 2 );
+    velocity = Vec.Zero;
     sampleTime = game.time;
 
     this.centerAtTime = function() {
@@ -74,7 +74,7 @@ function Kinetic( game ) {
   } );
 
   this.isMoving = function() { 
-    return velocity.e(1) || velocity.e(2);
+    return velocity.x || velocity.y;
   };
   
   this.isSamplingVelocity = function() {

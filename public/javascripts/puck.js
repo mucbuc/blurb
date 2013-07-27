@@ -8,7 +8,7 @@ objective:
 
 function Puck( game, center ) {
     
-  var offset = Vector.Zero( 2 );
+  var offset = Vec.Zero;
     
   Disc.call( this, game );
   

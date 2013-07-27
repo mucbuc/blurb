@@ -42,7 +42,13 @@ Written by: Mark Busenitz, mbusenitz@gmail.com
     }
   };
   
+  Vec.Zero = new Vec();
+
   exports.Vec = Vec;
+
+  exports.$V = function( a ) {
+    return a instanceof Array ? new Vec( a[0], a[1] ) : Vec.Zero;
+  };
   
 } )();
   
