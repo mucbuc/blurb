@@ -1,8 +1,4 @@
 .DS_Store
 .svn/
-node_modules/.bin
-node_modules/socket.io/
-node_modules/sylvester/
-node_modules/express/
-node_modules/jade/
+node_modules/
 crutch/
