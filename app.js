@@ -5,16 +5,15 @@
 
 var assert = require( 'assert' )
   , express = require('express')
+  , socketio = require( 'socket.io' )
   , routes = require('./routes')
   , rules = require('./routes/rules')
   , http = require('http')
   , path = require('path')
   , app = express()
-  , field = require( './lib/field' )
-  , socketHub = require( './lib/sockethub' );
+  , field = require( './lib/field' );
 
 assert( typeof field !== 'undefined' );
-assert( typeof socketHub !== 'undefined' );
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -39,7 +38,13 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var channel = socketHub.listen( server ); 
+var channel = socketio.listen( server ); 
 channel.on( 'connection', function( socket ) {  
+  
   field.addCell( socket );
+
+  socket.on( 'broadcast', function( event, data ) {
+    socket.broadcast.emit( event, data );
+  }); 
+
 } );

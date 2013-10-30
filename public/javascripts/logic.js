@@ -18,6 +18,9 @@ function Logic( game ) {
     
   goal.fillStyle = getRandomColor();
   game.emitter.on( 'pirate', function( data ) { 
+    
+    console.log( 'got pirate' );
+
     if (data.fillStyle === goal.fillStyle) {
       points += data.points + 1;
       updateScore( points );

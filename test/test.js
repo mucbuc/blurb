@@ -6,18 +6,11 @@ var assert = require( 'assert' )
 
 assert( typeof field !== 'undefined' );
 
-
 testBasic();
-
-process.on( 'exit', function() {
-	console.log( 'test passed' ); 
-});
-
-
 
 function testBasic() {
 	var COUNT = 1000
-	  , e = new events.EventEmitter();
+	  , e = new events.EventEmitter(); 
 	
 	e.setMaxListeners( COUNT ); 
 
@@ -25,4 +18,11 @@ function testBasic() {
 		field.addCell( e );
 		assert( field.countCells() == i + 1 );
 	}
+
+	process.on( 'exit', function() {
+		assert( !field.countCells() );
+		console.log( 'test passed' ); 
+	});
+
+	e.emit( 'disconnect' );
 }
