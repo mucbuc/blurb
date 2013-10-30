@@ -9,7 +9,7 @@ assert( typeof field !== 'undefined' );
 testBasic();
 
 function testBasic() {
-	var COUNT = 1000
+	var COUNT = 100
 	  , e = new events.EventEmitter(); 
 	
 	e.setMaxListeners( COUNT ); 

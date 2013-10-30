@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 /**
  * Module dependencies.
@@ -38,8 +39,8 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var channel = socketio.listen( server ); 
-channel.on( 'connection', function( socket ) {  
+var io = socketio.listen( server ); 
+io.on( 'connection', function( socket ) {  
   
   field.addCell( socket );
 
