@@ -3,14 +3,18 @@
  * Module dependencies.
  */
 
-var express = require('express')
+var assert = require( 'assert' )
+  , express = require('express')
   , routes = require('./routes')
   , rules = require('./routes/rules')
   , http = require('http')
   , path = require('path')
   , app = express()
-  , field = require( 'field' )
-  , socketHub = require( 'sockethub' );
+  , field = require( './lib/field' )
+  , socketHub = require( './lib/sockethub' );
+
+assert( typeof field !== 'undefined' );
+assert( typeof socketHub !== 'undefined' );
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -37,6 +41,5 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 
 var channel = socketHub.listen( server ); 
 channel.on( 'connection', function( socket ) {  
-  console.log( 'connection' );
   field.addCell( socket );
 } );
