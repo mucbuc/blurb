@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var assert = require( 'assert' )
-  , field = require( 'field' );
+  , field = require( '../lib/field' );
 
 assert( typeof field !== 'undefined' );
 
