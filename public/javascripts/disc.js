@@ -5,13 +5,23 @@ objective:
 */ 
 
 
-function Disc( game, r ) {
+function Disc( game, r) {
   
-  var radius = r == undefined ? game.DEFAULT_DISC_SIZE : r;
-  
-  if (game != undefined) {
+  var radius;
+
+  if (typeof game !== 'undefined') {
     Kinetic.call( this, game );
     game.visuals.addElements( this );
+
+    if (typeof r !== 'undefined') {
+      radius = r;
+    }
+    else {
+      radius = game.DEFAULT_DISC_SIZE;
+    }
+  }
+  else {
+    radius = 100;
   }
 
   this.render = function( canvas ) {
