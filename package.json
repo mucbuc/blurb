@@ -1,14 +1,16 @@
 {
   "name": "application-name",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "tape test/test.js"
   },
   "dependencies": {
     "express": "3.2.0",
     "jade": "*",
-    "socket.io": "*",
-    "mucbuc-jsbag": "*"
+    "socket.io": "*"
+  },
+  "devDependencies": {
+    "tape": "*"
   }
 }

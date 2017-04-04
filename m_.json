@@ -1,0 +1,5 @@
+{
+	"public/javascripts/lib": [
+		"https://github.com/mucbuc/jsbag.git"
+	]
+}
